@@ -1,0 +1,95 @@
+after-startup-command = ['exec-and-forget sketchybar']
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE & sketchybar --trigger windows_on_spaces'
+]
+
+start-at-login = true
+
+gaps.inner.horizontal = 10
+gaps.inner.vertical = 10
+gaps.outer.left = 10
+gaps.outer.bottom = 10
+gaps.outer.top = [
+    { monitor."built-in" = 20 },
+    { monitor."LC49G95T" = 60 },
+    30,
+]
+gaps.outer.right = 10
+
+
+# All possible keys:
+# - Letters.        a, b, c, ..., z
+# - Numbers.        0, 1, 2, ..., 9
+# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# - F-keys.         f1, f2, ..., f20
+# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
+#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
+# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+#                   keypadMinus, keypadMultiply, keypadPlus
+# - Arrows.         left, down, up, right
+
+# All possible modifiers: cmd, alt, ctrl, shift
+
+# All possible commands: https://nikitabobko.github.io/AeroSpace/commands.html
+
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+[mode.main.binding]
+alt-t = 'exec-and-forget ~/.config/script/open_iterm2.sh'
+
+alt-j = 'focus left'
+alt-keypad7 = 'focus left'
+alt-k = 'focus down'
+alt-l = 'focus up'
+alt-semicolon = 'focus right'
+alt-keypad9 = 'focus right'
+
+alt-shift-j = 'move left'
+alt-shift-keypad7 = 'move left'
+alt-shift-k = 'move down'
+alt-shift-l = 'move up'
+alt-shift-semicolon = 'move right'
+alt-shift-keypad9 = 'move right'
+
+# Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
+alt-h = 'split horizontal'
+alt-v = 'split vertical'
+
+alt-f = 'layout h_tiles v_accordion'
+alt-shift-f = 'fullscreen'
+
+
+alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+
+
+alt-shift-c = 'reload-config'
+
+alt-r = 'mode resize'
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+alt-shift-keypadMinus = 'resize smart -50'
+alt-shift-keypadPlus = 'resize smart +50'
