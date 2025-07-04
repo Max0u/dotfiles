@@ -38,7 +38,7 @@ enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = false
 
 [mode.main.binding]
-alt-t = 'exec-and-forget ~/.config/script/open_iterm2.sh'
+alt-t = 'exec-and-forget ~/.config/script/open_term.sh'
 
 alt-j = 'focus left'
 alt-keypad7 = 'focus left'
@@ -71,13 +71,11 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 
-
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
-
 
 alt-shift-c = 'reload-config'
 

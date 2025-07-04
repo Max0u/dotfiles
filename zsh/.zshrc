@@ -13,6 +13,7 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export AWS_PROFILE=main
 # Add Homebrew PATH
 export PATH="$PATH:/opt/homebrew/bin"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -43,6 +44,8 @@ export PATH="$PATH:/Users/maxime/.local/bin"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
+alias cd=z
+
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
@@ -51,3 +54,41 @@ function yy() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/maxime/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/maxime/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/maxime/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/maxime/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+function deploy() {
+	git stash -u
+	git checkout main
+	git pull --rebase --prune
+	git rebase origin/staging
+	git push origin main
+	git stash pop
+}
+
+export PATH=$PATH:/Users/maxime/Library/Android/sdk/platform-tools/
+
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source $GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration
+fi
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/maxime/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+alias run-clear=~/tmux/clear.sh
+alias kill-clear="tmux kill-session -t clear-env"

@@ -2,3 +2,7 @@ k9s:
   ui:
     enableMouse: true
     skin: catppuccin-macchiato
+  logger:
+     tail: 500
+     buffer: 5000
+     sinceSeconds: -1

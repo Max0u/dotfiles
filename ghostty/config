@@ -1,0 +1,18 @@
+theme = catppuccin-macchiato
+
+# font
+font-family = "JetBrains Mono"
+font-size = 13
+font-feature = -liga
+font-thicken = true
+
+# cursor
+cursor-style = block
+
+# window
+window-padding-x = 8
+window-padding-y = 8
+
+confirm-close-surface = false
+quit-after-last-window-closed = true
+macos-titlebar-proxy-icon = hidden
